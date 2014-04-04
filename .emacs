@@ -22,18 +22,18 @@
 (global-set-key (kbd "M-n")   'just-one-space)
 
 
+;;;; Resize windows
+(global-set-key (kbd "M-C-<left>")  'shrink-window-horizontally)
+(global-set-key (kbd "M-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-C-<down>")  'shrink-window)
+(global-set-key (kbd "M-C-<up>")    'enlarge-window)
+
+
 ;;;; Movement
 (global-set-key (kbd "M-<left>")  'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
-
-
-;;;; Resize windows
-(global-set-key (kbd "M-<left>")  'shrink-window-horizontally)
-(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-<down>")  'shrink-window)
-(global-set-key (kbd "M-<up>")    'enlarge-window)
 
 
 ;;;; Winner mode - undo movement/resize
@@ -54,7 +54,7 @@
 
 ;;;; Packages
 (setq my-packages
-  '(scala-mode2 erlang haskell-mode magit auto-complete))
+  '(scala-mode2 erlang haskell-mode magit auto-complete windmove))
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
