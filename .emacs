@@ -46,6 +46,11 @@
 (set-background-color "black")
 
 
+;;;; Fonts
+(set-frame-font
+  "-xos4-Terminus-normal-normal-normal-*-12-*-*-*-c-60-iso10646-1" nil t)
+
+
 ;;;; 80 column rule
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
