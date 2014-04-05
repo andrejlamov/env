@@ -23,17 +23,17 @@
 
 
 ;;;; Resize windows
-(global-set-key (kbd "M-C-<left>")  'shrink-window-horizontally)
-(global-set-key (kbd "M-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-C-<down>")  'shrink-window)
-(global-set-key (kbd "M-C-<up>")    'enlarge-window)
+(global-set-key (kbd "M-<left>")  'shrink-window-horizontally)
+(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-<down>")  'shrink-window)
+(global-set-key (kbd "M-<up>")    'enlarge-window)
 
 
 ;;;; Movement
-(global-set-key (kbd "M-<left>")  'windmove-left)
-(global-set-key (kbd "M-<right>") 'windmove-right)
-(global-set-key (kbd "M-<up>")    'windmove-up)
-(global-set-key (kbd "M-<down>")  'windmove-down)
+(global-set-key (kbd "M-C-<left>")  'windmove-left)
+(global-set-key (kbd "M-C-<right>") 'windmove-right)
+(global-set-key (kbd "M-C-<up>")    'windmove-up)
+(global-set-key (kbd "M-C-<down>")  'windmove-down)
 
 
 ;;;; Winner mode - undo movement/resize
