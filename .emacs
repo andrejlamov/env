@@ -149,3 +149,13 @@
 
 (global-set-key [f11] 'toggle-fullscreen)
 (put 'erase-buffer 'disabled nil)
+
+
+;;;; Date, time in status bar
+(setq display-time-day-and-date t
+                display-time-24hr-format t)
+             (display-time)
+
+
+;;;; Battery status
+(display-battery-mode 1)
