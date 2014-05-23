@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-c r") 'rename-buffer)
 (global-set-key (kbd "C-c p") 'org-export-as-pdf)
 (global-set-key (kbd "M-n")   'just-one-space)
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 
 ;;;; Resize windows
@@ -117,6 +118,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/org/code.org" "~/org/life.org" "~/org/work.org" "~/org/school.org")))
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . emacs)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -150,12 +152,20 @@
 (global-set-key [f11] 'toggle-fullscreen)
 (put 'erase-buffer 'disabled nil)
 
-
 ;;;; Date, time in status bar
 (setq display-time-day-and-date t
                 display-time-24hr-format t)
              (display-time)
 
-
 ;;;; Battery status
 (display-battery-mode 1)
+
+;;;; Push to dropbox
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/orgmode")
+;; Do not use ID properties when pushing
+(setq org-mobile-force-id-on-agenda-items nil)
