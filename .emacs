@@ -1,7 +1,7 @@
 ;;;; General
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+;(tool-bar-mode -1)
+;(scroll-bar-mode -1)
 (setq inhibit-startup-message t)
 (setq backup-inhibited t)
 (setq auto-save-default nil)
@@ -158,7 +158,7 @@
              (display-time)
 
 ;;;; Battery status
-(display-battery-mode 1)
+;(display-battery-mode 1)
 
 ;;;; Push to dropbox
 ;; Set to the location of your Org files on your local system
