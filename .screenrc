@@ -1,0 +1,8 @@
+startup_message off
+escape ^Tt
+defflow off
+altscreen on
+hardstatus on
+hardstatus alwayslastline "%H %c %d/%m | %w"
+
+
