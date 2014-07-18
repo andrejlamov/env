@@ -141,7 +141,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/org/code.org" "~/org/life.org" "~/org/work.org" "~/org/school.org")))
+ '(org-agenda-files (quote ("/andrej@andrej.nu:~/org/code.org"
+                            "/andrej@andrej.nu:~/org/life.org"
+                            "/andrej@andrej.nu:~/org/work.org"
+                            "/andrej@andrej.nu:~/org/school.org")))
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . emacs)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
