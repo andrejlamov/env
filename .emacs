@@ -60,7 +60,7 @@
 
 ;;;; Packages
 (setq my-packages
-  '(scala-mode2 erlang haskell-mode magit auto-complete windmove))
+  '(scala-mode2 erlang haskell-mode magit auto-complete windmove ace-window))
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
@@ -195,3 +195,6 @@
 (setq org-mobile-directory "~/Dropbox/orgmode")
 ;; Do not use ID properties when pushing
 (setq org-mobile-force-id-on-agenda-items nil)
+
+;;;; Ace-window
+(global-set-key (kbd "C-o") 'ace-window)
