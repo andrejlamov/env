@@ -11,7 +11,6 @@
 (setq-default indent-tabs-mode nil)
 (put 'narrow-to-region 'disabled nil)
 
-
 ;;;; Keys
 (global-set-key (kbd "C-x w") 'kill-region)
 (global-set-key (kbd "C-w")   'backward-kill-word)
@@ -22,13 +21,11 @@
 (global-set-key (kbd "M-n")   'just-one-space)
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-
 ;;;; Resize windows
 (global-set-key (kbd "M-<left>")  'shrink-window-horizontally)
 (global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-<down>")  'shrink-window)
 (global-set-key (kbd "M-<up>")    'enlarge-window)
-
 
 ;;;; Movement
 (global-set-key (kbd "M-C-<left>")  'windmove-left)
@@ -36,31 +33,26 @@
 (global-set-key (kbd "M-C-<up>")    'windmove-up)
 (global-set-key (kbd "M-C-<down>")  'windmove-down)
 
-
 ;;;; Winner mode - undo movement/resize
 (when (fboundp 'winner-mode)
   (winner-mode 1))
-
 
 ;;;; Basic colors
 (set-foreground-color "white")
 (set-background-color "black")
 
-
 ;;;; Fonts
 (set-frame-font
   "-xos4-Terminus-normal-normal-normal-*-12-*-*-*-c-60-iso10646-1" nil t)
-
 
 ;;;; 80 column rule
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-
 ;;;; Packages
 (setq my-packages
-  '(scala-mode2 erlang haskell-mode magit auto-complete windmove ace-window))
+  '(scala-mode2 erlang haskell-mode hayoo magit auto-complete windmove ace-window))
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
@@ -76,27 +68,22 @@
       (package-refresh-contents)
       (package-install package))))
 
-
 ;;;; Autocomplete everything
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
 (ac-config-default)
 
-
 ;;;; Tabsize
 (setq tab-width 2
       indent-tabs-mode nil)
 (setq indent-line-function 'insert-tab)
 
-
 ;; Hippieexpand
 (global-set-key (kbd "M-i") 'hippie-expand)
 
-
 ;;;; Haskell indent
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
 
 ;;;; Tramp!
 (require 'tramp)
@@ -141,10 +128,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("/andrej@andrej.nu:~/org/code.org"
-                            "/andrej@andrej.nu:~/org/life.org"
-                            "/andrej@andrej.nu:~/org/work.org"
-                            "/andrej@andrej.nu:~/org/school.org")))
+ '(org-agenda-files (quote ("~/org/org.org")))
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . emacs)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -160,11 +144,9 @@
 ;; Auto-revert
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
-
 ;;;; iBuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
-
 
 ;;;; Full screen for x
 (defun toggle-fullscreen ()
@@ -185,16 +167,6 @@
 
 ;;;; Battery status
 (display-battery-mode 1)
-
-;;;; Push to dropbox
-;; Set to the location of your Org files on your local system
-(setq org-directory "~/org")
-;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "~/org/flagged.org")
-;; Set to <your Dropbox root directory>/MobileOrg.
-(setq org-mobile-directory "~/Dropbox/orgmode")
-;; Do not use ID properties when pushing
-(setq org-mobile-force-id-on-agenda-items nil)
 
 ;;;; Ace-window
 (global-set-key (kbd "C-o") 'ace-window)
