@@ -38,8 +38,8 @@
   (winner-mode 1))
 
 ;;;; Basic colors
-(set-foreground-color "white")
-(set-background-color "black")
+(set-foreground-color "black")
+(set-background-color "white")
 
 ;;;; Fonts
 (set-frame-font
@@ -50,123 +50,31 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-;;;; Packages
-(setq my-packages
-  '(scala-mode2 erlang haskell-mode hayoo magit auto-complete windmove ace-window))
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives
-               '("melpa" .
-                 "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives
-               '("marmalade" .
-                 "http://marmalade-repo.org/packages/") t)
-
-  (dolist (package my-packages)
-    (unless (package-installed-p package)
-      (package-refresh-contents)
-      (package-install package))))
-
-;;;; Autocomplete everything
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(require 'auto-complete-config)
-(ac-config-default)
-
-;;;; Tabsize
-(setq tab-width 2
-      indent-tabs-mode nil)
-(setq indent-line-function 'insert-tab)
-
 ;; Hippieexpand
 (global-set-key (kbd "M-i") 'hippie-expand)
 
-;;;; Haskell indent
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;; Packages
+(setq package-list '(org magit magit-filenotify scala-mode2))
 
-;;;; Tramp!
-(require 'tramp)
-(setenv "andrej" "/ssh:andrej@andrej.nu:~/")
-;; Modline
-(defconst my-mode-line-buffer-identification
-            (list
-             '(:eval
-               (let ((host-name
-                      (if (file-remote-p default-directory)
-                          (tramp-file-name-host
-                           (tramp-dissect-file-name default-directory))
-                        (system-name))))
-                 (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
-                     (substring host-name 0 (match-beginning 1))
-                   host-name)))
-             ": %12b"))
-          (setq-default
-           mode-line-buffer-identification
-           my-mode-line-buffer-identification)
-          (add-hook
-           'dired-mode-hook
-           (lambda ()
-             (setq
-              mode-line-buffer-identification
-              my-mode-line-buffer-identification)))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 
+(package-initialize)
 
-;;;; Org-mode
-;; Latex
-(require 'org-latex)
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-export-latex-classes
-             '("article"
-               "\\documentclass{article}
-                 \\usepackage{amsmath}"
-               ("\\section{%s}" . "\\section*{%s}")))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/org/org.org")))
- '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . emacs)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
+;; Orgmode
 
-;;; DocView
-;; Continuous scrolling.
-(setq doc-view-continuous t)
-;; Auto-revert
-(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+(setq org-agenda-files (list "~/org/org.org"))
+(setq org-todo-keywords
+      '((sequence "TODO" "PENDING" "CANCEL" "DONE")))
+;; Tramp
 
-;;;; iBuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
-;;;; Full screen for x
-(defun toggle-fullscreen ()
-  "Toggle full screen on X11"
-  (interactive)
-  (when (eq window-system 'x)
-    (set-frame-parameter
-     nil 'fullscreen
-     (when (not (frame-parameter nil 'fullscreen)) 'fullboth))))
-
-(global-set-key [f11] 'toggle-fullscreen)
-(put 'erase-buffer 'disabled nil)
-
-;;;; Date, time in status bar
-(setq display-time-day-and-date t
-                display-time-24hr-format t)
-             (display-time)
-
-;;;; Battery status
-(display-battery-mode 1)
-
-;;;; Ace-window
-(global-set-key (kbd "C-o") 'ace-window)
+(setq tramp-default-method "ssh")
