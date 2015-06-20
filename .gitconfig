@@ -1,0 +1,6 @@
+[user]
+        name="Andrej Lamov"
+        email="andrej.lamov@gmail.com"
+[core]
+        editor="emacs -nw"
+        pager="less -FRX"
