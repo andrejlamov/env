@@ -1,3 +1,5 @@
 XTerm*foreground: rgb:ee/ee/ee
 XTerm*background: rgb:08/08/08
 XTerm*scrollBar: false
+XTerm*metaSendsEscape: true
+Xterm.*backarrowKey: false
