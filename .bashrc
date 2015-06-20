@@ -1,9 +1,8 @@
-# Source some bash
-source ~/.bash_profile
+# Aliases 
 source ~/.bash_aliases
 
 # Term
 TERM=xterm-256color
 
-# Bash
+# Prompt
 PS1="[\u \w]$"
