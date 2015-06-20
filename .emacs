@@ -9,6 +9,7 @@
 (put 'narrow-to-region 'disabled nil)
 (show-paren-mode t)
 (setq show-paren-delay 0)
+(normal-erase-is-backspace-mode 1)
 
 
 ;;;; Packages
