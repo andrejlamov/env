@@ -1,0 +1,3 @@
+[submodule "sunrise-commander"]
+	path = sunrise-commander
+	url = git@github.com:escherdragon/sunrise-commander.git
