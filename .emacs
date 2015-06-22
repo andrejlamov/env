@@ -11,6 +11,7 @@
 (setq show-paren-delay 0)
 (normal-erase-is-backspace-mode 0)
 (ido-mode 1)
+(winner-mode 1)
 
 ;;;; Packages
 (let ((default-directory "~/.emacs.d/lisp/"))
