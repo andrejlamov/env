@@ -10,7 +10,7 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (normal-erase-is-backspace-mode 0)
-
+(ido-mode 1)
 
 ;;;; Packages
 (let ((default-directory "~/.emacs.d/lisp/"))
@@ -93,7 +93,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-habit-show-all-today t))
+ '(org-habit-show-all-today t)
+ '(package-selected-packages
+   (quote
+    (zencoding-mode zenburn-theme zenburn zen-mode tao-theme magit hc-zenburn-theme gnuplot anti-zenburn-theme))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
