@@ -4,4 +4,20 @@ defflow off
 altscreen on
 hardstatus on
 hardstatus alwayslastline "%H %c %d/%m | %w"
+
 mousetrack on
+
+# Resize window
+bind = resize =
+bind o resize +10
+bind u resize -10
+bind _ resize max
+
+# Switch focus
+bind i focus up
+bind k focus down
+bind j focus left
+bind l focus right
+
+# Rebind kill
+bind K kill
