@@ -114,3 +114,18 @@
 
 ;;;; Sunrise
 (require 'sunrise-commander)
+
+
+;;;; Elpy
+(elpy-enable)
+
+
+;;;; Web-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+
+;;;; Erlang
+(global-set-key (kbd "C-c e")   'erlang-compile)
+(add-hook 'after-init-hook 'my-after-init-hook)
+(defun my-after-init-hook ()
+  (require 'edts-start))
