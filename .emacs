@@ -37,21 +37,23 @@
 ;;;; Keys
 (global-set-key (kbd "C-x w") 'kill-region)
 (global-set-key (kbd "C-w")   'backward-kill-word)
+(global-set-key (kbd "M-e")   'backward-delete-char-untabify)
+(global-set-key (kbd "C-o")   'other-window)
 (global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "C-c r") 'rename-buffer)
 (global-set-key (kbd "M-n")   'just-one-space)
-(global-set-key (kbd "M-i")   'hippie-expand)
+(global-set-key (kbd "M-e")   'hippie-expand)
 (global-set-key (kbd "C-c b") 'ibuffer)
 
-(global-set-key (kbd "M-<left>")  'shrink-window-horizontally)
-(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-<down>")  'shrink-window)
-(global-set-key (kbd "M-<up>")    'enlarge-window)
+(global-set-key (kbd "M-.") 'shrink-window-horizontally)
+(global-set-key (kbd "M-,") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-u") 'shrink-window)
+(global-set-key (kbd "M-o") 'enlarge-window)
 
-(global-set-key (kbd "M-C-<left>")  'windmove-left)
-(global-set-key (kbd "M-C-<right>") 'windmove-right)
-(global-set-key (kbd "M-C-<up>")    'windmove-up)
-(global-set-key (kbd "M-C-<down>")  'windmove-down)
+(global-set-key (kbd "M-j") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-i") 'windmove-up)
+(global-set-key (kbd "M-k") 'windmove-down)
 
 
 ;;;; 80 column rule
