@@ -66,7 +66,12 @@
 ;;;; Orgmode
 (require 'org)
 (require 'org-habit)
-(setq org-agenda-files (list "~/org/org.org"))
+'(org-agenda-files (quote ("/andrej@andrej.nu:~/org/org.org")))
+
+(defun org ()
+  (interactive)
+  (find-file "/andrej.nu:~/org/org.org"))
+
 (setq org-todo-keywords
        '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
 (global-set-key (kbd "C-c p") 'org-export-as-pdf)
