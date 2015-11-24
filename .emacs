@@ -70,7 +70,7 @@
 
 (defun org ()
   (interactive)
-  (find-file "/andrej.nu:~/org/org.org"))
+  (find-file "/andrej@andrej.nu:~/org/org.org"))
 
 (setq org-todo-keywords
        '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
