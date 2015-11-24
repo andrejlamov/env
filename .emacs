@@ -28,7 +28,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(org magit))
+(setq package-list '(org edts magit web-mode))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -78,49 +78,8 @@
 ;;;; Tramp
 (setq tramp-default-method "ssh")
 
-
-;;;; Magit colors
-(eval-after-load 'magit
-  '(progn
-     (set-face-background 'magit-diff-add "color-232")
-     (set-face-foreground 'magit-diff-add "color-119")
-     (set-face-background 'magit-diff-del "color-232")
-     (set-face-foreground 'magit-diff-del "color-160")
-     (set-face-foreground 'magit-diff-none "white")
-     (unless window-system
-       (set-face-background 'magit-item-highlight "color-233"))))
-
-
-;;;; Customs
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-habit-show-all-today t)
- '(package-selected-packages
-   (quote
-    (zencoding-mode zenburn-theme zenburn zen-mode tao-theme magit hc-zenburn-theme gnuplot anti-zenburn-theme))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "color-232" :foreground "color-255" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
- '(mode-line-highlight ((t (:box (:line-width 2 :color "white" :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "grey30" :foreground "color-245" :box (:line-width -1 :color "grey40") :weight light))))
- '(org-done ((t (:foreground "PaleGreen"))))
- '(org-todo ((t (:foreground "Pink"))))
- '(sr-directory-face ((t (:inherit dired-directory)))))
-
-
 ;;;; Sunrise
 (require 'sunrise-commander)
-
-
-;;;; Elpy
-(elpy-enable)
 
 
 ;;;; Web-mode
