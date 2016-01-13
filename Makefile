@@ -8,7 +8,7 @@ emacs: submodule sunrise org
 
 submodule:
 	git submodule init
-	git submodule update sunrise-commander
+	git submodule update sunrise-commander org-mode
 	mkdir -p ~/.emacs.d/lisp
 
 sunrise:
