@@ -14,8 +14,14 @@
 (winner-mode 1)
 
 ;;;; Packages
-(let ((default-directory "~/.emacs.d/lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
+;; (let ((default-directory "~/.emacs.d/lisp/"))
+;;   (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory  "~/.emacs.d/lisp/"))
+  (setq load-path
+        (append
+         (let ((load-path  (copy-sequence load-path))) ;; Shadow
+           (normal-top-level-add-subdirs-to-load-path))
+         load-path)))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
