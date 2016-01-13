@@ -34,7 +34,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(org edts magit web-mode))
+(setq package-list '(edts magit web-mode))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -71,6 +71,8 @@
 
 ;;;; Orgmode
 (require 'org)
+(require 'ox-bibtex)
+(require 'ox-rst)
 (require 'org-habit)
 '(org-agenda-files (quote ("/andrej@andrej.nu:~/org/org.org")))
 
@@ -83,6 +85,13 @@
 (global-set-key (kbd "C-c p") 'org-export-as-pdf)
 (global-set-key (kbd "C-c h") 'org-html-export-to-html)
 (global-set-key (kbd "C-c a") 'org-agenda)
+
+(setq org-latex-pdf-process '("texi2dvi -p -b -V %f"))
+
+;; (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose
+;; --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
+;; "texi2dvi --pdf --clean --verbose --batch %f")))
+
 
 ;;;; Theme
 (custom-set-faces
