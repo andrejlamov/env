@@ -72,8 +72,18 @@
 ;;;; Orgmode
 (require 'org)
 (require 'ox-bibtex)
-(require 'ox-rst)
 (require 'org-habit)
+(require 'ox-latex)
+
+(add-to-list 'org-latex-classes
+             '("article"
+               "\\documentclass{article}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 '(org-agenda-files (quote ("/andrej@andrej.nu:~/org/org.org")))
 
 (defun org ()
