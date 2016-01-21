@@ -138,3 +138,15 @@
 (add-hook 'after-init-hook 'my-after-init-hook)
 (defun my-after-init-hook ()
   (require 'edts-start))
+
+
+;;;; Quick Yes
+(defun quick-yes (prompt)
+  "Prompt for yes/no, but only test for no."
+  (if (string= "no"
+               (downcase
+                (read-from-minibuffer
+                 (concat prompt "(yes or no) "))))
+      nil
+    t))
+(defalias 'yes-or-no-p 'quick-yes)
