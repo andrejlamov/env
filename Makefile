@@ -1,8 +1,8 @@
 ROOT = $(shell pwd)
 
-PHONY: emacs screen bash
+PHONY: emacs screen bash ditaa
 
-emacs: submodule sunrise org
+emacs: submodule sunrise org ditaa
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
 
@@ -21,6 +21,13 @@ org:
 	cd org-mode && make
 	ln -fs $(ROOT)/org-mode/lisp ~/.emacs.d/lisp/org-mode
 	ln -fs $(ROOT)/org-mode/contrib/lisp ~/.emacs.d/lisp/org-mode/contrib
+
+ditaa:
+	wget --no-http-keep-alive -O ditaa.zip "http://downloads.sourceforge.net/project/ditaa/ditaa/0.9/ditaa0_9.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fditaa%2Ffiles%2Fditaa%2F0.9%2F&ts=1453301598&use_mirror=skylink"
+	unzip ditaa.zip -d ditaa/
+	rm -rf ditaa.zip
+	mkdir -p ~/.emacs.d/lisp/contrib/scripts
+	cp ditaa/ditaa0_9.jar ~/.emacs.d/lisp/contrib/scripts/ditaa.jar
 
 screen:
 	ln -fs $(ROOT)/.screenrc ~/

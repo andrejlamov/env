@@ -98,6 +98,15 @@
 
 (setq org-latex-pdf-process '("texi2dvi -p -b -V %f"))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+  '((ditaa . t))) ; this line activates ditaa
+
+
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "ditaa")))  ; don't ask for ditaa
+          (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
 ;; (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose
 ;; --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
 ;; "texi2dvi --pdf --clean --verbose --batch %f")))
