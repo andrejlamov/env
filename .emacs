@@ -34,7 +34,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode))
+(setq package-list '(edts magit web-mode guide-key))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -62,6 +62,22 @@
 (global-set-key (kbd "M-i") 'windmove-up)
 (global-set-key (kbd "M-k") 'windmove-down)
 
+(define-prefix-command 'my-map)
+(global-set-key (kbd "<C-tab>") 'my-map)
+(define-key my-map (kbd "a") 'artist-mode)
+(define-key my-map (kbd "o") 'org-mode)
+(define-key my-map (kbd "s") 'shell)
+(define-key my-map (kbd "d") 'sunrise)
+
+(require 'guide-key)
+(guide-key-mode 1)
+(setq guide-key/guide-key-sequence
+      '("C-x"
+        "C-c"
+        "<C-tab>"))
+(setq guide-key/idle-delay 0.1)
+(setq guide-key/popup-window-position 'bottom)
+(setq guide-key/recursive-key-sequence-flag t)
 
 ;;;; 80 column rule
 (require 'whitespace)
