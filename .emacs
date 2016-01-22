@@ -68,6 +68,7 @@
 (define-key my-map (kbd "o") 'org-mode)
 (define-key my-map (kbd "s") 'shell)
 (define-key my-map (kbd "d") 'sunrise)
+(define-key my-map (kbd "e") 'eshell)
 
 (require 'guide-key)
 (guide-key-mode 1)
