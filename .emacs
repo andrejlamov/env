@@ -104,6 +104,7 @@
 (setq guide-key/guide-key-sequence
       '("C-x"
         "C-c"
+        "C-h"
         "<C-tab>"))
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
