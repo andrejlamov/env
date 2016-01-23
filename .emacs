@@ -12,6 +12,9 @@
 (normal-erase-is-backspace-mode 0)
 (ido-mode 1)
 (winner-mode 1)
+(menu-bar-mode 0)
+(toggle-scroll-bar 0)
+(tool-bar-mode 0)
 
 ;;;; Packages
 ;; (let ((default-directory "~/.emacs.d/lisp/"))
