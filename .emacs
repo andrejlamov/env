@@ -1,3 +1,32 @@
+;;;; Theme
+(menu-bar-mode 0)
+(toggle-scroll-bar 0)
+(tool-bar-mode 0)
+
+(custom-set-faces
+ '(default ((t (:inherit nil
+                         :stipple nil
+                         :background "black"
+                         :foreground "white"
+                         :inverse-video nil
+                         :box nil
+                         :strike-through nil
+                         :overline nil
+                         :underline nil
+                         :slant normal
+                         weight: default
+                         :height 100))))
+ '(mode-line-highlight ((t (:box (:line-width 2
+                                              :color "white"
+                                              :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line
+                                    :background "grey30"
+                                    :foreground "color-245"
+                                    :box (:line-width -1 :color "grey40")
+                                    :weight light))))
+ '(org-done ((t (:foreground "PaleGreen"))))
+ '(org-todo ((t (:foreground "Pink")))))
+
 ;;;; General
 (setq inhibit-startup-message t)
 (setq backup-inhibited t)
@@ -12,9 +41,6 @@
 (normal-erase-is-backspace-mode 0)
 (ido-mode 1)
 (winner-mode 1)
-(menu-bar-mode 0)
-(toggle-scroll-bar 0)
-(tool-bar-mode 0)
 
 ;;;; Packages
 ;; (let ((default-directory "~/.emacs.d/lisp/"))
@@ -130,27 +156,6 @@
 ;; (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose
 ;; --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
 ;; "texi2dvi --pdf --clean --verbose --batch %f")))
-
-
-;;;; Theme
-(custom-set-faces
- '(default
-    ((t (:inherit nil :stipple
-    nil :background "black" :foreground "white" :inverse-video
-    nil :box nil :strike-through nil :overline nil :underline
-    nil :slant normal weight: default :height 100))))
-
- '(mode-line-highlight
-   ((t (:box (:line-width 2 :color "white" :style
-   released-button)))))
-
- '(mode-line-inactive
-   ((t (:inherit
-        mode-line :background "grey30" :foreground "color-245" :box (:line-width
-        -1 :color "grey40") :weight light))))
-
- '(org-done ((t (:foreground "PaleGreen"))))
- '(org-todo ((t (:foreground "Pink")))))
 
 
 ;;;; Tramp
