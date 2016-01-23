@@ -134,9 +134,21 @@
 
 ;;;; Theme
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "color-232" :foreground "color-255" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
- '(mode-line-highlight ((t (:box (:line-width 2 :color "white" :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "grey30" :foreground "color-245" :box (:line-width -1 :color "grey40") :weight light))))
+ '(default
+    ((t (:inherit nil :stipple
+    nil :background "black" :foreground "white" :inverse-video
+    nil :box nil :strike-through nil :overline nil :underline
+    nil :slant normal weight: default :height 100))))
+
+ '(mode-line-highlight
+   ((t (:box (:line-width 2 :color "white" :style
+   released-button)))))
+
+ '(mode-line-inactive
+   ((t (:inherit
+        mode-line :background "grey30" :foreground "color-245" :box (:line-width
+        -1 :color "grey40") :weight light))))
+
  '(org-done ((t (:foreground "PaleGreen"))))
  '(org-todo ((t (:foreground "Pink")))))
 
