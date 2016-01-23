@@ -182,3 +182,7 @@
       nil
     t))
 (defalias 'yes-or-no-p 'quick-yes)
+
+
+;; Eshell
+(setq eshell-visual-subcommands '(("git" "log" "show" "diff")))
