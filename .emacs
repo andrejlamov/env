@@ -98,6 +98,10 @@
 (define-key my-map (kbd "s") 'shell)
 (define-key my-map (kbd "d") 'sunrise)
 (define-key my-map (kbd "e") 'eshell)
+(define-key my-map (kbd "t") 'term)
+(define-key my-map (kbd "c") 'term-char-mode)
+(define-key my-map (kbd "l") 'term-line-mode)
+
 
 (require 'guide-key)
 (guide-key-mode 1)
