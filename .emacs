@@ -62,7 +62,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode guide-key helm))
+(setq package-list '(edts magit web-mode guide-key helm smart-tab))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -217,3 +217,8 @@
               (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
+
+
+;;;; Smart tab
+(setq-default indent-tabs-mode t)
+(global-smart-tab-mode t)
