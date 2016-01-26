@@ -73,7 +73,6 @@
 (global-set-key (kbd "C-x w") 'kill-region)
 (global-set-key (kbd "C-w")   'backward-kill-word)
 (global-set-key (kbd "M-e")   'backward-delete-char-untabify)
-(global-set-key (kbd "C-o")   'other-window)
 (global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "C-c r") 'rename-buffer)
 (global-set-key (kbd "M-n")   'just-one-space)
@@ -90,7 +89,7 @@
 (global-set-key (kbd "M-k") 'windmove-down)
 
 (define-prefix-command 'my-map)
-(global-set-key (kbd "<C-tab>") 'my-map)
+(global-set-key (kbd "C-o") 'my-map)
 (define-key my-map (kbd "a") 'artist-mode)
 (define-key my-map (kbd "o") 'org-mode)
 (define-key my-map (kbd "s") 'shell)
@@ -107,7 +106,7 @@
       '("C-x"
         "C-c"
         "C-h"
-        "<C-tab>"))
+        "C-o"))
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
