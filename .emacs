@@ -39,7 +39,6 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (normal-erase-is-backspace-mode 0)
-(ido-mode 1)
 (winner-mode 1)
 
 ;;;; Packages
@@ -63,7 +62,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode guide-key))
+(setq package-list '(edts magit web-mode guide-key helm))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -79,7 +78,6 @@
 (global-set-key (kbd "C-c r") 'rename-buffer)
 (global-set-key (kbd "M-n")   'just-one-space)
 (global-set-key (kbd "M-e")   'hippie-expand)
-(global-set-key (kbd "C-c b") 'ibuffer)
 
 (global-set-key (kbd "M-.") 'shrink-window-horizontally)
 (global-set-key (kbd "M-,") 'enlarge-window-horizontally)
@@ -196,3 +194,26 @@
 
 ;; Eshell
 (setq eshell-visual-subcommands '(("git" "log" "show" "diff")))
+
+;;;; Helm
+(require 'helm-config)
+
+(require 'helm-eshell)
+
+(helm-mode 1)
+(helm-autoresize-mode t)
+
+(global-set-key (kbd "C-x b")      'helm-buffers-list)
+(global-set-key (kbd "M-x")        'helm-M-x)
+(global-set-key (kbd "C-c h")      'helm-command-prefix)
+(global-set-key (kbd "C-x C-f")    'helm-find-files)
+(global-set-key (kbd "M-y")        'helm-show-kill-ring)
+(global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+
+
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
+
+(define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
