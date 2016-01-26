@@ -159,6 +159,8 @@
 ;; --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
 ;; "texi2dvi --pdf --clean --verbose --batch %f")))
 
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
 
 ;;;; Tramp
 (setq tramp-default-method "ssh")
