@@ -6,8 +6,8 @@
 (custom-set-faces
  '(default ((t (:inherit nil
                          :stipple nil
-                         :background "black"
-                         :foreground "white"
+                         :background "#080808"
+                         :foreground "#eeeeee"
                          :inverse-video nil
                          :box nil
                          :strike-through nil
