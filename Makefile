@@ -36,6 +36,9 @@ bash:
 	ln -fs $(ROOT)/.bash_aliases ~/
 	ln -fs $(ROOT)/.bashrc ~/
 
+git:
+	ln -fs $(ROOT)/.gitconfig ~/
+
 texlive:
 	wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	mkdir -p texlive
