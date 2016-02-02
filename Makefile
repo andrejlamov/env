@@ -37,10 +37,3 @@ git:
 wl:
 	ln -fs $(ROOT)/.wl ~/
 	ln -fs $(ROOT)/.folders ~/
-
-texlive:
-	wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-	mkdir -p texlive
-	tar xzvf install-tl-unx.tar.gz -C texlive --strip-components=1
-	texlive/install-tl
-	rm install-tl-unx.tar.gz
