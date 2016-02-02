@@ -131,11 +131,12 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-'(org-agenda-files (quote ("/andrej@andrej.nu:~/org/org.org")))
+'(org-agenda-files (quote ("/andrej@andrej.nu:/home/andrej/org/org.org")))
 
 (defun org ()
+  "Open org.org from andrej.nu"
   (interactive)
-  (find-file "/andrej@andrej.nu:~/org/org.org"))
+  (find-file "/andrej@andrej.nu:/home/andrej/org/org.org"))
 
 (setq org-todo-keywords
        '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
