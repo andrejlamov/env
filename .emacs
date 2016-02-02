@@ -57,7 +57,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode guide-key helm smart-tab))
+(setq package-list '(edts magit web-mode guide-key helm smart-tab wanderlust org-plus-contrib))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
