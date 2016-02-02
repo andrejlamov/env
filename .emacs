@@ -216,6 +216,7 @@
 (global-set-key (kbd "C-x C-f")    'helm-find-files)
 (global-set-key (kbd "M-y")        'helm-show-kill-ring)
 (global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 
 
