@@ -4,21 +4,27 @@
 (tool-bar-mode 0)
 
 (custom-set-faces
- '(default ((t (:inherit nil :stipple
-			 nil :background "#080808" :foreground "#eeeeee" :inverse-video
-			 nil :box nil :strike-through nil :overline nil :underline
-			 nil :slant normal weight: default :height 100))))
- '(helm-selection ((t (:background "indian
- red" :distant-foreground "black"))))
- '(helm-source-header ((t (:background "dim
- gray" :foreground "white" :weight bold :height
- 1.3 :family "Mono"))))
- '(minibuffer-prompt ((t (:foreground "white"))))
- '(mode-line-highlight ((t (:box (:line-width
-				  2 :color "white" :style released-button)))))
- '(mode-line-inactive ((t (:inherit
-			   mode-line :background "grey30" :foreground "color-245" :box (:line-width
-											-1 :color "grey40") :weight light))))
+ '(default ((t (:inherit nil
+                         :stipple nil
+                         :background "#080808"
+                         :foreground "#eeeeee"
+                         :inverse-video nil
+                         :box nil
+
+                         :strike-through nil
+                         :overline nil
+                         :underline nil
+                         :slant normal
+                         weight: default
+                         :height 100))))
+ '(mode-line-highlight ((t (:box (:line-width 2
+                                              :color "white"
+                                              :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line
+                                    :background "grey30"
+                                    :foreground "color-245"
+                                    :box (:line-width -1 :color "grey40")
+                                    :weight light))))
  '(org-done ((t (:foreground "PaleGreen"))))
  '(org-todo ((t (:foreground "Pink")))))
 
