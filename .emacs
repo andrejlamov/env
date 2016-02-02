@@ -228,3 +228,11 @@
  (lambda ()
    (setq tab-always-indent 'complete)
    (add-to-list 'completion-styles 'initials t)))
+
+
+;;;; Async
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
+(async-bytecomp-package-mode 1)
+
+
