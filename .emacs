@@ -191,6 +191,13 @@
 ;; Eshell
 (setq eshell-visual-subcommands '(("git" "log" "show" "diff")))
 
+(add-hook
+ 'eshell-mode-hook
+ (lambda ()
+   (setq pcomplete-cycle-completions nil)))
+
+(setq eshell-cmpl-cycle-completions nil)
+
 ;;;; Helm
 (require 'helm-config)
 
@@ -215,6 +222,9 @@
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
 
 
-;;;; Smart tab
-(setq-default indent-tabs-mode t)
-(global-smart-tab-mode t)
+;;;; Elisp
+(add-hook
+ 'lisp-mode-hook
+ (lambda ()
+   (setq tab-always-indent 'complete)
+   (add-to-list 'completion-styles 'initials t)))
