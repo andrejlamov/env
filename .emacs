@@ -96,6 +96,7 @@
 (define-key my-map (kbd "t") 'term)
 (define-key my-map (kbd "c") 'term-char-mode)
 (define-key my-map (kbd "l") 'term-line-mode)
+(define-key my-map (kbd "x") 'eval-buffer)
 
 
 (require 'guide-key)
