@@ -83,6 +83,9 @@
 (global-set-key (kbd "M-i") 'windmove-up)
 (global-set-key (kbd "M-k") 'windmove-down)
 
+(global-set-key (kbd "C-0") 'delete-other-window)
+(global-set-key (kbd "C-1") 'delete-other-windows)
+
 (define-prefix-command 'my-map)
 (global-set-key (kbd "C-o") 'my-map)
 (define-key my-map (kbd "a") 'artist-mode)
@@ -236,3 +239,8 @@
 (async-bytecomp-package-mode 1)
 
 
+;;;; Delete other window
+(defun delete-other-window ()
+  (interactive)
+  (other-window 1)
+  (delete-window))
