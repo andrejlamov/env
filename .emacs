@@ -1,22 +1,13 @@
 ;;;; Theme
 (menu-bar-mode 0)
-(toggle-scroll-bar 0)
+(scroll-bar-mode -1)
 (tool-bar-mode 0)
 
 (custom-set-faces
- '(default ((t (:inherit nil
-                         :stipple nil
-                         :background "#080808"
-                         :foreground "#eeeeee"
-                         :inverse-video nil
-                         :box nil
-
-                         :strike-through nil
-                         :overline nil
-                         :underline nil
-                         :slant normal
-                         weight: default
-                         :height 100))))
+ '(default ((t (:background "#080808"
+                            :foreground "#eeeeee"
+                            :font "Terminus"
+                            :height 12))))
  '(mode-line-highlight ((t (:box (:line-width 2
                                               :color "white"
                                               :style released-button)))))
