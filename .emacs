@@ -2,22 +2,7 @@
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 (tool-bar-mode 0)
-
-(custom-set-faces
- '(default ((t (:background "#080808"
-                            :foreground "#eeeeee"
-                            :font "Terminus"
-                            :height 12))))
- '(mode-line-highlight ((t (:box (:line-width 2
-                                              :color "white"
-                                              :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line
-                                    :background "grey30"
-                                    :foreground "color-245"
-                                    :box (:line-width -1 :color "grey40")
-                                    :weight light))))
- '(org-done ((t (:foreground "PaleGreen"))))
- '(org-todo ((t (:foreground "Pink")))))
+(load-theme 'andrej t)
 
 ;;;; General
 (setq inhibit-startup-message t)
