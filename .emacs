@@ -2,6 +2,7 @@
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 (tool-bar-mode 0)
+(setq show-trailing-whitespace t)
 (load-theme 'andrej t)
 
 ;;;; General
@@ -17,7 +18,8 @@
 (setq show-paren-delay 0)
 (normal-erase-is-backspace-mode 0)
 (winner-mode 1)
-
+(global-visual-line-mode)
+(setq-default fill-column 80)
 ;;;; Packages
 ;; (let ((default-directory "~/.emacs.d/lisp/"))
 ;;   (normal-top-level-add-subdirs-to-load-path))
@@ -79,6 +81,7 @@
 (define-key my-map (kbd "c") 'term-char-mode)
 (define-key my-map (kbd "l") 'term-line-mode)
 (define-key my-map (kbd "x") 'eval-buffer)
+(define-key my-map (kbd "8") 'set-80-columns)
 
 
 (require 'guide-key)
@@ -91,11 +94,6 @@
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
-
-;;;; 80 column rule
-(require 'whitespace)
-(setq whitespace-style '(face empty tabs lines-tail trailing))
-(global-whitespace-mode t)
 
 
 ;;;; Orgmode
@@ -145,7 +143,7 @@
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
-
+(setq org-adapt-indentation nil)
 ;;;; Tramp
 (setq tramp-default-method "ssh")
 
@@ -231,3 +229,15 @@
   (interactive)
   (other-window 1)
   (delete-window))
+
+
+;; Alex 80 columns
+(defun set-80-columns ()
+  "Set the selected window to 80 columns."
+  (interactive)
+  (delete-other-windows)
+  (split-window-right (+ 2 fill-column))
+  (other-window 1)
+  (switch-to-buffer "*scratch*")
+  (other-window 1))
+
