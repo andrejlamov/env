@@ -5,6 +5,9 @@ PHONY: emacs screen bash ditaa
 emacs: submodule sunrise ditaa wl
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
+	mkdir -p ~/.emacs.d
+	ln -fs $(ROOT)/andrej-theme.el ~/.emacs.d
+
 
 submodule:
 	git submodule init
