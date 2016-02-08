@@ -1,23 +1,33 @@
+(setq warning-suppress-types '((alloc)))
 ;;;; Theme
-(menu-bar-mode 0)
-(scroll-bar-mode -1)
-(tool-bar-mode 0)
+;(menu-bar-mode 0)
+;(scroll-bar-mode -1)
+;(tool-bar-mode 0)
+(setq show-trailing-whitespace t)
+
 
 (custom-set-faces
- '(default ((t (:background "#080808"
-                            :foreground "#eeeeee"
-                            :font "Terminus"
-                            :height 12))))
- '(mode-line-highlight ((t (:box (:line-width 2
-                                              :color "white"
-                                              :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line
-                                    :background "grey30"
-                                    :foreground "color-245"
-                                    :box (:line-width -1 :color "grey40")
-                                    :weight light))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "#080808" :foreground "#eeeeee" :font "Terminus" :height 12))))
+ '(diff-added ((t (:foreground "#00af00"))))
+ '(diff-changed ((t (:background nil :foreground "#caca86"))))
+ '(diff-removed ((t (:foreground "#d70000"))))
+
+ '(magit-diff-add ((t (:inherit diff-added))))
+ '(magit-diff-added ((t (:inherit diff-added))))
+ '(magit-diff-del ((t (:inherit diff-removed))))
+ '(magit-diff-our ((t (:inherit diff-removed))))
+ '(magit-diff-removed ((t (:inherit diff-removed))))
+ '(magit-diff-their ((t (:inherit diff-added))))
+
+ '(mode-line-highlight ((t (:box (:line-width 2 :color "white" :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "grey30" :foreground "color-245" :box (:line-width -1 :color "grey40") :weight light))))
  '(org-done ((t (:foreground "PaleGreen"))))
- '(org-todo ((t (:foreground "Pink")))))
+ '(org-todo ((t (:foreground "Pink"))))
+ '(trailing-whitespace ((t (:background "#767676")))))
 
 ;;;; General
 (setq inhibit-startup-message t)
@@ -33,7 +43,7 @@
 (normal-erase-is-backspace-mode 0)
 (winner-mode 1)
 (global-visual-line-mode)
-
+(setq fill-column 80)
 ;;;; Packages
 ;; (let ((default-directory "~/.emacs.d/lisp/"))
 ;;   (normal-top-level-add-subdirs-to-load-path))
@@ -108,11 +118,6 @@
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
-
-;;;; 80 column rule
-;(require 'whitespace)
-;(setq whitespace-style '(face empty tabs lines-tail trailing))
-;(global-whitespace-mode nil)
 
 
 ;;;; Orgmode
@@ -218,7 +223,7 @@
 (global-set-key (kbd "C-x C-f")    'helm-find-files)
 (global-set-key (kbd "M-y")        'helm-show-kill-ring)
 (global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
-(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for  helm-M-x
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 
 
@@ -254,8 +259,14 @@
 (defun set-80-columns ()
   "Set the selected window to 80 columns."
   (interactive)
-  (visual-line-mode 1)
   (delete-other-windows)
   (split-window-right (+ 2 fill-column))
-  (switch-to-buffer-other-window "*scratch*")
-    (other-window 1))
+  (other-window 1)
+  (switch-to-buffer "*scratch*")
+  (other-window 1))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
