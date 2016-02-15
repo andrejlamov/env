@@ -128,9 +128,9 @@
 (global-set-key (kbd "C-c h") 'org-html-export-to-html)
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-;(setq org-latex-pdf-process
-;  '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
-(setq org-latex-pdf-process '("texi2dvi -p -b -V %f"))
+(setq org-latex-pdf-process
+ '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
+;(setq org-latex-pdf-process '("texi2dvi -p -b -V %f"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
