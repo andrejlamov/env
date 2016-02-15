@@ -76,6 +76,7 @@
 (global-set-key (kbd "C-1") 'delete-other-windows)
 
 (define-prefix-command 'my-map)
+(global-set-key (kbd "C-<tab>") 'my-map)
 (global-set-key (kbd "C-o") 'my-map)
 (define-key my-map (kbd "a") 'artist-mode)
 (define-key my-map (kbd "o") 'org-mode)
@@ -95,7 +96,8 @@
       '("C-x"
         "C-c"
         "C-h"
-        "C-o"))
+        "C-o"
+        "C-<tab>"))
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
