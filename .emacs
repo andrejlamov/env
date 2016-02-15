@@ -3,6 +3,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq show-trailing-whitespace t)
+(set-frame-font "Terminus")
 
 ;;;; General
 (setq inhibit-startup-message t)
