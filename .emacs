@@ -4,6 +4,9 @@
 (tool-bar-mode -1)
 (setq show-trailing-whitespace t)
 (set-frame-font "Terminus")
+(display-time-mode 1)
+(setq display-time-string-forms
+      '((propertize (concat " " 24-hours ":" minutes " "))))
 
 ;;;; General
 (setq inhibit-startup-message t)
