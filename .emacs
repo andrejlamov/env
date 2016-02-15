@@ -3,7 +3,6 @@
 (scroll-bar-mode -1)
 (tool-bar-mode 0)
 (setq show-trailing-whitespace t)
-(load-theme 'andrej t)
 
 ;;;; General
 (setq inhibit-startup-message t)
@@ -41,11 +40,16 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode guide-key helm smart-tab wanderlust org-plus-contrib))
+(setq package-list '(edts magit web-mode guide-key helm smart-tab wanderlust org-plus-contrib tao-theme powerline))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+;;;; Theme
+(load-theme 'tao-yin t)
+(require 'powerline)
+(powerline-default-theme)
 
 
 ;;;; Keys
