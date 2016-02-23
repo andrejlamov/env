@@ -154,6 +154,17 @@
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
 (setq org-adapt-indentation nil)
+
+
+;; Flow monitor state tempalte
+
+(add-to-list 'org-structure-template-alist
+             ;; backquote to eval exp after , and return a quioted list
+              `("m" ,
+                (format "** %s\n\n_phy_\n\n_ment_\n\n_emo_\n\n_flow_"
+                        (format-time-string "<%Y-%m-%d %a %H:%M>"))))
+
+
 ;;;; Tramp
 (setq tramp-default-method "ssh")
 
