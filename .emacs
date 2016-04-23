@@ -58,6 +58,7 @@
 
 ;;;; Keys
 (global-set-key (kbd "C-x w") 'kill-region)
+(global-set-key (kbd "M-q") 'backward-delete-char-untabify)
 (global-set-key (kbd "C-w")   'backward-kill-word)
 (global-set-key (kbd "M-e")   'backward-delete-char-untabify)
 (global-set-key (kbd "C-c g") 'magit-status)
@@ -91,7 +92,14 @@
 (define-key my-map (kbd "l") 'term-line-mode)
 (define-key my-map (kbd "x") 'eval-buffer)
 (define-key my-map (kbd "8") 'set-80-columns)
+(define-key my-map (kbd "r") 'helm-flyspell-correct)
+(define-key my-map (kbd "1") 'russian-translit)
+(define-key my-map (kbd "2") 'latin)
 
+(defun russian-translit ()
+  (interactive) (set-input-method "cyrillic-translit"))
+(defun latin ()
+  (interactive) (set-input-method "ucs"))
 
 (require 'guide-key)
 (guide-key-mode 1)
