@@ -129,6 +129,17 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+(add-to-list 'org-latex-classes
+             '("cv" "\\documentclass[10pt]{article}
+\\usepackage[scale=0.8]{geometry}
+\\usepackage{palatino}
+\\usepackage{sectsty}
+\\usepackage[T1]{fontenc}
+\\usepackage{libertine}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ))
+
+
 '(org-agenda-files (quote ("/andrej@andrej.nu:/home/andrej/org/org.org")))
 
 (defun org ()
