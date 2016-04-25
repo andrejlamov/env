@@ -95,6 +95,7 @@
 (define-key my-map (kbd "r") 'helm-flyspell-correct)
 (define-key my-map (kbd "1") 'russian-translit)
 (define-key my-map (kbd "2") 'latin)
+(define-key my-map (kbd "g") 'org-capture)
 
 (defun russian-translit ()
   (interactive) (set-input-method "cyrillic-translit"))
@@ -115,6 +116,11 @@
 
 
 ;;;; Orgmode
+
+(setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
+
+
 (require 'org)
 (require 'ox-bibtex)
 (require 'org-habit)
@@ -140,7 +146,27 @@
                ))
 
 
-'(org-agenda-files (quote ("/andrej@andrej.nu:/home/andrej/org/org.org")))
+(setq org-agenda-files
+  '("/ssh:andrej@andrej.nu:/home/andrej/org/org.org"))
+
+(setq org-default-notes-file
+      "/ssh:andrej@andrej.nu:/home/andrej/org/org.org")
+
+;;;; Automatic commit when saving org-mode file
+(add-hook 'after-save-hook (lambda () 
+                             (if (equal
+                                  (buffer-file-name)
+                                  #("/ssh:andrej@andrej.nu:/home/andrej/org/org.org" 1 4 (tramp-default t))) (shell-command "git commit -am 'after-save-hook auto-commit'"))))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline       "/ssh:andrej@andrej.nu:/home/andrej/org/org.org" "Tasks")
+         "* WAIT %?\n  %i\n  %a")))
+
+(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
+ (timeline . "  % s")
+ (todo . " %i %b ")
+ (tags . " %i %-12:c")
+ (search . " %i %-12:c")))
 
 (defun org ()
   "Open org.org from andrej.nu"
@@ -148,7 +174,8 @@
   (find-file "/andrej@andrej.nu:/home/andrej/org/org.org"))
 
 (setq org-todo-keywords
-       '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+      '((sequence "NEXT(n)" "WAIT(w)" "|" "DONE(d)")))
+
 (global-set-key (kbd "C-c p") 'org-export-as-pdf)
 (global-set-key (kbd "C-c h") 'org-html-export-to-html)
 (global-set-key (kbd "C-c a") 'org-agenda)
