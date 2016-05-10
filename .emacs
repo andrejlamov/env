@@ -1,31 +1,4 @@
-;;;; Theme
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(setq show-trailing-whitespace t)
-(set-frame-font "Terminus")
-(display-time-mode 1)
-(setq display-time-string-forms
-      '((propertize (concat " " 24-hours ":" minutes " "))))
-
-;;;; General
-(setq inhibit-startup-message t)
-(setq backup-inhibited t)
-(setq auto-save-default nil)
-(setq-default column-number-mode t)
-(setq-default truncate-lines t)
-(prefer-coding-system 'utf-8)
-(setq-default indent-tabs-mode nil)
-(put 'narrow-to-region 'disabled nil)
-(show-paren-mode t)
-(setq show-paren-delay 0)
-(normal-erase-is-backspace-mode 0)
-(winner-mode 1)
-(global-visual-line-mode)
-(setq-default fill-column 80)
 ;;;; Packages
-;; (let ((default-directory "~/.emacs.d/lisp/"))
-;;   (normal-top-level-add-subdirs-to-load-path))
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (setq load-path
         (append
@@ -60,17 +33,41 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+
 ;;;; Theme
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 (load-theme 'tao-yin t)
 (require 'powerline)
 (powerline-default-theme)
+(setq show-trailing-whitespace t)
+(set-frame-font "Terminus")
+(display-time-mode 1)
+(setq display-time-string-forms
+      '((propertize (concat " " 24-hours ":" minutes " "))))
 
+;;;; General
+(setq inhibit-startup-message t)
+(setq backup-inhibited t)
+(setq auto-save-default nil)
+(setq-default column-number-mode t)
+(setq-default truncate-lines t)
+(prefer-coding-system 'utf-8)
+(setq-default indent-tabs-mode nil)
+(put 'narrow-to-region 'disabled nil)
+(show-paren-mode t)
+(setq show-paren-delay 0)
+(normal-erase-is-backspace-mode 0)
+(winner-mode 1)
+(global-visual-line-mode)
+(setq-default fill-column 80)
+(setq undo-limit 1000000)
 
 ;;;; Keys
 (global-set-key (kbd "C-x w") 'kill-region)
-(global-set-key (kbd "M-q") 'backward-delete-char-untabify)
+(global-set-key (kbd "M-q")   'backward-delete-char-untabify)
 (global-set-key (kbd "C-w")   'backward-kill-word)
-(global-set-key (kbd "M-e")   'backward-delete-char-untabify)
 (global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "C-c r") 'rename-buffer)
 (global-set-key (kbd "M-n")   'just-one-space)
@@ -88,6 +85,17 @@
 
 (global-set-key (kbd "C-0") 'delete-other-window)
 (global-set-key (kbd "C-1") 'delete-other-windows)
+
+(global-set-key (kbd "C-c p") 'org-export-as-pdf)
+(global-set-key (kbd "C-c h") 'org-html-export-to-html)
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+(global-set-key (kbd "C-x b")      'helm-buffers-list)
+(global-set-key (kbd "M-x")        'helm-M-x)
+(global-set-key (kbd "C-c h")      'helm-command-prefix)
+(global-set-key (kbd "C-x C-f")    'helm-find-files)
+(global-set-key (kbd "M-y")        'helm-show-kill-ring)
+(global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
 
 (define-prefix-command 'my-map)
 (global-set-key (kbd "C-<tab>") 'my-map)
@@ -108,10 +116,24 @@
 (define-key my-map (kbd "g") 'org-capture)
 
 (defun russian-translit ()
-  (interactive) (set-input-method "cyrillic-translit"))
-(defun latin ()
-  (interactive) (set-input-method "ucs"))
+  (interactive)
+  (cyrillic-translit))
 
+(defun latin ()
+  (interactive)
+  (set-input-method "ucs"))
+
+;; Avy
+(define-prefix-command 'avy-map)
+(global-set-key (kbd "M-a") 'avy-map)
+(define-key avy-map (kbd "c") 'avy-goto-char)
+(define-key avy-map (kbd "l") 'avy-goto-line)
+(define-key avy-map (kbd "w") 'avy-goto-word-or-subword-1)
+(define-key avy-map (kbd "r") 'avy-copy-region)
+(define-key avy-map (kbd "v") 'avy-copy-line)
+(define-key avy-map (kbd "b") 'avy-pop-mark)
+
+;;;; Guide-key
 (require 'guide-key)
 (guide-key-mode 1)
 (setq guide-key/guide-key-sequence
@@ -120,22 +142,20 @@
         "C-h"
         "C-o"
         "C-<tab>"
-        "M-a"))
+        "M-a")) ;; Avy
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
 
 
 ;;;; Orgmode
-
-(setq org-enforce-todo-dependencies t)
-(setq org-enforce-todo-checkbox-dependencies t)
-
-
 (require 'org)
 (require 'ox-bibtex)
 (require 'org-habit)
 (require 'ox-latex)
+
+(setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
 
 (add-to-list 'org-latex-classes
              '("article"
@@ -156,14 +176,13 @@
                ("\\section{%s}" . "\\section*{%s}")
                ))
 
-
 (setq org-agenda-files
   '("/ssh:andrej@andrej.nu:/home/andrej/org/org.org"))
 
 (setq org-default-notes-file
       "/ssh:andrej@andrej.nu:/home/andrej/org/org.org")
 
-;;;; Automatic commit when saving org-mode file
+;; Automatic commit when saving org-mode file
 (add-hook 'after-save-hook (lambda () 
                              (if (equal
                                   (buffer-file-name)
@@ -186,10 +205,6 @@
 
 (setq org-todo-keywords
       '((sequence "NEXT(n)" "WAIT(w)" "|" "DONE(d)")))
-
-(global-set-key (kbd "C-c p") 'org-export-as-pdf)
-(global-set-key (kbd "C-c h") 'org-html-export-to-html)
-(global-set-key (kbd "C-c a") 'org-agenda)
 
 (setq org-latex-pdf-process
  '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
@@ -238,6 +253,7 @@
   (setq web-mode-markup-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
+
 ;;;; Erlang
 (global-set-key (kbd "C-c e")   'erlang-compile)
 (add-hook 'after-init-hook 'my-after-init-hook)
@@ -274,23 +290,14 @@
 
 (helm-mode 1)
 (helm-autoresize-mode t)
-
-(global-set-key (kbd "C-x b")      'helm-buffers-list)
-(global-set-key (kbd "M-x")        'helm-M-x)
-(global-set-key (kbd "C-c h")      'helm-command-prefix)
-(global-set-key (kbd "C-x C-f")    'helm-find-files)
-(global-set-key (kbd "M-y")        'helm-show-kill-ring)
-(global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
 (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-
 
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
-
 (setq helm-ff-auto-update-initial-value t)
 
 ;;;; Elisp
@@ -324,13 +331,5 @@
   (switch-to-buffer "*scratch*")
   (other-window 1))
 
-;; Avy
-(define-prefix-command 'avy-map)
-(global-set-key (kbd "M-a") 'avy-map)
-(define-key avy-map (kbd "c") 'avy-goto-char)
-(define-key avy-map (kbd "l") 'avy-goto-line)
-(define-key avy-map (kbd "w") 'avy-goto-word-or-subword-1)
-(define-key avy-map (kbd "r") 'avy-copy-region)
-(define-key avy-map (kbd "v") 'avy-copy-line)
-(define-key avy-map (kbd "b") 'avy-pop-mark)
+
 
