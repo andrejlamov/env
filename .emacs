@@ -44,7 +44,17 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq package-list '(edts magit web-mode guide-key helm smart-tab wanderlust org-plus-contrib tao-theme powerline))
+(setq package-list '(edts
+                     magit
+                     web-mode
+                     guide-key
+                     helm
+                     smart-tab
+                     wanderlust
+                     org-plus-contrib
+                     tao-theme
+                     powerline
+                     avy))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -109,7 +119,8 @@
         "C-c"
         "C-h"
         "C-o"
-        "C-<tab>"))
+        "C-<tab>"
+        "M-a"))
 (setq guide-key/idle-delay 0.1)
 (setq guide-key/popup-window-position 'bottom)
 (setq guide-key/recursive-key-sequence-flag t)
@@ -312,4 +323,14 @@
   (other-window 1)
   (switch-to-buffer "*scratch*")
   (other-window 1))
+
+;; Avy
+(define-prefix-command 'avy-map)
+(global-set-key (kbd "M-a") 'avy-map)
+(define-key avy-map (kbd "c") 'avy-goto-char)
+(define-key avy-map (kbd "l") 'avy-goto-line)
+(define-key avy-map (kbd "w") 'avy-goto-word-or-subword-1)
+(define-key avy-map (kbd "r") 'avy-copy-region)
+(define-key avy-map (kbd "v") 'avy-copy-line)
+(define-key avy-map (kbd "b") 'avy-pop-mark)
 
