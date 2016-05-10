@@ -280,6 +280,7 @@
 
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
 
+(setq helm-ff-auto-update-initial-value t)
 
 ;;;; Elisp
 (add-hook
