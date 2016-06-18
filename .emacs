@@ -434,3 +434,6 @@
 (key-chord-define-global "ps" 'org-gcal-sync)
 (key-chord-define-global "pf" 'org-gcal-fetch)
 
+
+;;;; deskel
+(load-library "desk.el")

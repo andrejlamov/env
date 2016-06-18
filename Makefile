@@ -1,15 +1,15 @@
 ROOT = $(shell pwd)
 
-PHONY: emacs screen bash ditaa
+.PHONY: emacs screen bash ditaa sunrise deskel org-gcal.el
 
-emacs: submodule sunrise ditaa wl
+emacs: submodule sunrise ditaa wl deskel org-gcal.el
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
 	mkdir -p ~/.emacs.d
 
 submodule:
 	git submodule init
-	git submodule update sunrise-commander
+	git submodule update sunrise-commander deskel 
 	mkdir -p ~/.emacs.d/lisp
 
 sunrise:
@@ -17,11 +17,20 @@ sunrise:
 	cd sunrise-commander && emacs -Q --batch -L . -f batch-byte-compile *.el
 	ln -fs $(ROOT)/sunrise-commander ~/.emacs.d/lisp/
 
+deskel:
+	git submodule update deskel
+	cd deskel && emacs -Q --batch -L . -f batch-byte-compile *.el
+	ln -fs $(ROOT)/deskel ~/.emacs.d/lisp/
+
+
+org-gcal.el:
+	git submodule update org-gcal.el
+	ln -fs $(ROOT)/org-gcal.el ~/.emacs.d/lisp/	
+
 ditaa:
-	wget --no-http-keep-alive -O ditaa.zip "http://downloads.sourceforge.net/project/ditaa/ditaa/0.9/ditaa0_9.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fditaa%2Ffiles%2Fditaa%2F0.9%2F&ts=1453301598&use_mirror=skylink"
-	unzip ditaa.zip -d ditaa/
-	mkdir -p ~/.emacs.d/elpa/contrib/scripts
-	cp ditaa/ditaa0_9.jar ~/.emacs.d/elpa/contrib/scripts/ditaa.jar
+	git submodule update ditaa
+	cd ditaa/build && ant
+	ln -fs $(ROOT)/ditaa/releases/ditaa0_10.jar ~/.emacs.d/ditaa.jar
 
 screen:
 	ln -fs $(ROOT)/.screenrc ~/
