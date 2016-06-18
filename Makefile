@@ -47,6 +47,3 @@ git:
 wl:
 	ln -fs $(ROOT)/.wl ~/
 	ln -fs $(ROOT)/.folders ~/
-
-clean:
-	rm -rf ditaa.zip ditaa
