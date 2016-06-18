@@ -449,3 +449,9 @@
 
 ;;;; org-gcal
 (load-library "org-gcal.el")
+
+
+;;;; load secrets
+(if (file-exists-p "~/secret.el")
+    (load-file "~/secret.el"))
+
