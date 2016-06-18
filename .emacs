@@ -43,7 +43,14 @@
                      elpy
                      ensime
                      key-chord
-                     image+))
+                     image+
+                     elixir-mode
+                     alchemist
+                     company
+                     alert
+                     request-deferred
+                     paredit
+                     ))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -437,3 +444,7 @@
 
 ;;;; deskel
 (load-library "desk.el")
+
+
+;;;; org-gcal
+(load-library "org-gcal.el")

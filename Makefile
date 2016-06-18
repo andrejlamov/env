@@ -25,7 +25,8 @@ deskel:
 
 org-gcal.el:
 	git submodule update org-gcal.el
-	ln -fs $(ROOT)/org-gcal.el ~/.emacs.d/lisp/	
+	mkdir -p ~/.emacs.d/lisp/org-gcal
+	ln -fs $(ROOT)/org-gcal.el/org-gcal.el ~/.emacs.d/lisp/org-gcal/
 
 ditaa:
 	git submodule update ditaa
