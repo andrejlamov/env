@@ -13,3 +13,6 @@ export EDITOR=emacsclient
 
 # Env for compiled stuff
 PATH=~/env/bin:$PATH
+
+# Time
+export TZ="/usr/share/zoneinfo/Europe/Stockholm"
