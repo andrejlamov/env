@@ -68,7 +68,8 @@
 (setq display-time-string-forms
       '((propertize (concat " " 24-hours ":" minutes " "))))
 (require 'powerline)
-(powerline-default-theme)
+(powerline-center-theme)
+
 
 
 ;;;; General
