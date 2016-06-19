@@ -70,8 +70,8 @@
 (require 'powerline)
 (powerline-center-theme)
 (custom-set-faces
- '(show-paren-match ((t (:background "gray9" :foreground "green"))))
- '(show-paren-mismatch ((t (:background "gray9" :foreground "red")))))
+ '(show-paren-match ((t (:background nil :foreground "green"))))
+ '(show-paren-mismatch ((t (:background nil :foreground "red")))))
 
 
 
@@ -466,7 +466,6 @@
                                      (if (some 'buffer-is-file '("~/org/calendar.org" "~/org/gtd"))
                                          (shell-command "git commit -am 'auto-commit'"))))
 
-;;;; load secrets
 (if (file-exists-p "~/secret.el")
     (load-file "~/secret.el"))
 
