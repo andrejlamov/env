@@ -482,7 +482,7 @@
 
 (global-set-key (kbd "C-x C-s") (lambda () (interactive)
                                   (if (some 'buffer-is-file '("~/org/calendar.org" "~/org/gtd"))
-                                      (org-gcal-sync))
+                                      (org-gcal-sync)) ;; is saving buffer
                                   (save-buffer)))
 
 (advice-add 'save-buffer :after (lambda ()
