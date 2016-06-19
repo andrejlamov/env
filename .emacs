@@ -50,6 +50,7 @@
                      alert
                      request-deferred
                      paredit
+                     neotree
                      ))
 
 (dolist (package package-list)
@@ -450,6 +451,8 @@
 (key-chord-define-global "pa" 'org-agenda-list)
 (key-chord-define-global "pf" 'org-gcal-fetch)
 
+;; neotree "n"
+(key-chord-define-global "nt" 'neotree-toggle)
 
 ;;;; deskel
 (load-library "desk.el")
