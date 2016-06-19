@@ -451,7 +451,9 @@
 (key-chord-define-global "pf" 'org-gcal-fetch)
 (key-chord-define-global "pa" 'org-agenda-list)
 (key-chord-define-global "pf" 'org-gcal-fetch)
-
+(key-chord-define-global "pw" (lambda ()
+                                (interactive)
+                                (browse-url "https://calendar.google.com/calendar/render#main_7%7Cmonth")))
 ;; neotree "n"
 (key-chord-define-global "nt" 'neotree-toggle)
 
