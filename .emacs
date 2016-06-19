@@ -69,6 +69,9 @@
       '((propertize (concat " " 24-hours ":" minutes " "))))
 (require 'powerline)
 (powerline-center-theme)
+(custom-set-faces
+ '(show-paren-match ((t (:background "gray9" :foreground "green"))))
+ '(show-paren-mismatch ((t (:background "gray9" :foreground "red")))))
 
 
 
