@@ -493,3 +493,13 @@
 (if (file-exists-p "~/secret.el")
     (load-file "~/secret.el"))
 
+
+
+;;;; neotree
+(add-hook 'popwin:before-popup-hook
+          (lambda () (setq neo-persist-show nil)))
+(add-hook 'popwin:after-popup-hook
+          (lambda () (setq neo-persist-show t)))
+
+(setq neo-smart-open t)
+
