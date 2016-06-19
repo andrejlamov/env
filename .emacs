@@ -51,6 +51,7 @@
                      request-deferred
                      paredit
                      neotree
+                     symon
                      ))
 
 (dolist (package package-list)
@@ -65,7 +66,7 @@
 (load-theme 'tao-yin t)
 (setq show-trailing-whitespace t)
 (set-frame-font "Terminus 8")
-(display-time-mode 1)
+(display-time-mode 0)
 (setq display-time-string-forms
       '((propertize (concat " " 24-hours ":" minutes " "))))
 (require 'powerline)
@@ -453,6 +454,19 @@
 
 ;; neotree "n"
 (key-chord-define-global "nt" 'neotree-toggle)
+
+
+;;;; symon monitor
+(setq symon-delay 2)
+(setq symon-monitors '(symon-current-time-monitor
+                       symon-linux-memory-monitor
+                       symon-linux-cpu-monitor
+                       symon-linux-battery-monitor
+                       symon-linux-network-rx-monitor
+                       symon-linux-network-tx-monitor
+                       ))
+(symon-mode)
+
 
 ;;;; deskel
 (load-library "desk.el")
