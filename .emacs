@@ -449,7 +449,19 @@
 
 ;;;; org-gcal
 (load-library "org-gcal.el")
+(defun buffer-is-file (filename)
+  (equal (buffer-file-name (current-buffer))
+         (file-truename filename)))
 
+(global-set-key (kbd "C-x C-s") (lambda () (interactive)
+                                  (if (some 'buffer-is-file '("~/org/calendar.org" "~/org/gtd"))
+                                      (org-gcal-sync))
+                                  (save-buffer)))
+
+(advice-add 'save-buffer :after (lambda ()
+                                     (interactive)
+                                     (if (some 'buffer-is-file '("~/org/calendar.org" "~/org/gtd"))
+                                         (shell-command "git commit -am 'auto-commit'"))))
 
 ;;;; load secrets
 (if (file-exists-p "~/secret.el")
