@@ -173,6 +173,9 @@
                                  (tags . " %i %-12:c")
                                  (search . " %i %-12:c")))
 
+
+(setq org-agenda-span 14) ;; show 2 weeks in agenda
+
 (defun org ()
   (interactive)
   (find-file "~/org/calendar.org"))
@@ -443,6 +446,8 @@
 ;; org files "p"
 (key-chord-define-global "pc" 'org)
 (key-chord-define-global "ps" 'org-gcal-sync)
+(key-chord-define-global "pf" 'org-gcal-fetch)
+(key-chord-define-global "pa" 'org-agenda-list)
 (key-chord-define-global "pf" 'org-gcal-fetch)
 
 
