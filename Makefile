@@ -2,7 +2,7 @@ ROOT = $(shell pwd)
 
 .PHONY: emacs screen bash ditaa sunrise deskel org-gcal.el
 
-emacs: submodule sunrise ditaa wl deskel org-gcal.el
+emacs: submodule sunrise wl deskel org-gcal.el
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
 	mkdir -p ~/.emacs.d
