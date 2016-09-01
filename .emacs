@@ -61,7 +61,8 @@
 
 ;;;; Theme
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
+(if window-system
+    (scroll-bar-mode -1))
 (tool-bar-mode -1)
 (load-theme 'tao-yin t)
 (setq show-trailing-whitespace t)
@@ -70,7 +71,7 @@
 (setq display-time-string-forms
       '((propertize (concat " " 24-hours ":" minutes " "))))
 (require 'powerline)
-(powerline-center-theme)
+(powerline-vim-theme)
 (custom-set-faces
  '(show-paren-match ((t (:background nil :foreground "green"))))
  '(show-paren-mismatch ((t (:background nil :foreground "red")))))
@@ -459,15 +460,15 @@
 
 
 ;;;; symon monitor
-(setq symon-delay 2)
-(setq symon-monitors '(symon-current-time-monitor
-                       symon-linux-memory-monitor
-                       symon-linux-cpu-monitor
-                       symon-linux-battery-monitor
-                       symon-linux-network-rx-monitor
-                       symon-linux-network-tx-monitor
-                       ))
-(symon-mode)
+;; (setq symon-delay 2)
+;; (setq symon-monitors '(symon-current-time-monitor
+;;                        symon-linux-memory-monitor
+;;                        symon-linux-cpu-monitor
+;;                        symon-linux-battery-monitor
+;;                        symon-linux-network-rx-monitor
+;;                        symon-linux-network-tx-monitor
+;;                        ))
+;; (symon-mode)
 
 
 ;;;; deskel
