@@ -1,8 +1,8 @@
 ROOT = $(shell pwd)
 
-.PHONY: emacs screen bash ditaa sunrise deskel org-gcal.el
+.PHONY: emacs screen bash ditaa sunrise deskel org-gcal.el sbt
 
-emacs: submodule sunrise wl deskel org-gcal.el
+emacs: submodule sunrise wl deskel org-gcal.el sbt
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
 	mkdir -p ~/.emacs.d
@@ -47,3 +47,7 @@ git:
 wl:
 	ln -fs $(ROOT)/.wl ~/
 	ln -fs $(ROOT)/.folders ~/
+
+sbt:
+	mkdir -p ~/.sbt/0.13/plugins
+	ln -fs $(ROOT)/plugins.sbt ~/.sbt/0.13/plugins/
