@@ -2,6 +2,8 @@ ROOT = $(shell pwd)
 
 .PHONY: emacs screen bash ditaa sunrise deskel org-gcal.el sbt
 
+all: emacs bash git screen
+
 emacs: submodule sunrise wl deskel org-gcal.el sbt
 	echo $(ROOT)
 	ln -fs $(ROOT)/.emacs ~/
