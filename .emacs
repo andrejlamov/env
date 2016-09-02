@@ -395,6 +395,7 @@
 (define-key my-map (kbd "1") 'russian-translit)
 (define-key my-map (kbd "2") 'latin)
 (define-key my-map (kbd "g") 'org-capture)
+(define-key my-map (kbd "z") 'key-chord-mode)
 
 (defun russian-translit ()
   (interactive)
