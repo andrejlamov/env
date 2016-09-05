@@ -52,4 +52,4 @@ wl:
 
 sbt:
 	mkdir -p ~/.sbt/0.13/plugins
-	ln -fs $(ROOT)/plugins.sbt ~/.sbt/0.13/plugins/
+	cp -fr .sbt ~/
