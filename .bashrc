@@ -5,7 +5,7 @@ source ~/.bash_aliases
 TERM=xterm-256color
 
 # Prompt
-PS1="[\u \w]$"
+PS1="[\u@\h \w]$"
 
 # Emacs
 export ALTERNATE_EDITOR=""
