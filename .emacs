@@ -344,6 +344,13 @@
 (add-hook 'scala-mode-hook 'ensime-mode)
 (setq ensime-sbt-perform-on-save "test")
 
+(defun ensime-interrupt ()
+  (interactive)
+  (sbt:switch-to-active-sbt-buffer)
+  (sbt-clear)
+  (comint-interrupt-subjob)
+  )
+(define-key ensime-mode-map (kbd "C-c C-b .")  'ensime-interrupt)
 
 ;;;; Elixir
 (require 'elixir-mode)
